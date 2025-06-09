@@ -13,8 +13,8 @@ const Header = () => {
         </span>
       </div>
       <nav className="nav">
-        <a href="#buscar">BUSCAR</a>
-        <a href="#perfil">PERFIL</a>
+        <a href="/filtrogeneral">BUSCAR</a>
+        <a href="/perfil">PERFIL</a>
       </nav>
       <button className="logout-btn">CERRAR SESIÓN</button>
     </header>
