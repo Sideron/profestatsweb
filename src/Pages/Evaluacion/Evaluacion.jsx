@@ -1,21 +1,26 @@
 import React, { useState } from "react";
+import { useLocation } from "react-router-dom";
 import Header from "../../Componentes/Header/Header.jsx";
 import FondoDecorativo from "../../Componentes/Fondo/Fondo.jsx";
+import profesores from "../../data/Profesores.json";
+import cursosData from "../../data/Cursos.json";
+import relaciones from "../../data/Relacion_Profesor_Curso.json";
 import "./Evaluacion.css";
 
 const Evaluacion = () => {
+  const location = useLocation();
+  const { profesorId } = location.state || {};
+
   const [curso, setCurso] = useState("");
   const [claridad, setClaridad] = useState("");
   const [calificacion, setCalificacion] = useState("");
   const [comentario, setComentario] = useState("");
   const [anonimo, setAnonimo] = useState(null);
 
-  const cursos = [
-    "Programación Móvil",
-    "Programación Web",
-    "Programación I",
-    "Programación II",
-  ];
+  const cursosDelProfesor = relaciones
+    .filter((rel) => rel.profesor_id === profesorId)
+    .map((rel) => cursosData.find((c) => c.course_id === rel.course_id))
+    .filter(Boolean);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,9 +39,9 @@ const Evaluacion = () => {
           className="select"
         >
           <option value="">Selecciona un curso</option>
-          {cursos.map((c, i) => (
-            <option key={i} value={c}>
-              {c}
+          {cursosDelProfesor.map((c) => (
+            <option key={c.course_id} value={c.name}>
+              {c.name}
             </option>
           ))}
         </select>
