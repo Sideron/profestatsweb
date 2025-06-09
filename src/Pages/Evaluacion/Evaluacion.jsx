@@ -24,8 +24,6 @@ const Evaluacion = () => {
   };
 
   return (
-    <FondoDecorativo>
-      <Header />
       <div className="evaluacion-container">
         <h1>Elige tu curso</h1>
         <select
@@ -99,7 +97,7 @@ const Evaluacion = () => {
           Enviar evaluación
         </button>
       </div>
-    </FondoDecorativo>
+
   );
 };
 
