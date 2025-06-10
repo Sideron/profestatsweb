@@ -4,7 +4,8 @@ import Header from "../../Componentes/Header/Header.jsx";
 import FondoDecorativo from "../../Componentes/Fondo/Fondo.jsx";
 import profesores from "../../data/Profesores.json";
 import cursosData from "../../data/Cursos.json";
-import relaciones from "../../data/Relacion_Profesor_Curso.json";
+import relacionProfesorCurso from '../../data/Relacion_Profesor_Curso.json';
+
 import "./Evaluacion.css";
 
 const Evaluacion = () => {
@@ -17,7 +18,7 @@ const Evaluacion = () => {
   const [comentario, setComentario] = useState("");
   const [anonimo, setAnonimo] = useState(null);
 
-  const cursosDelProfesor = relaciones
+  const cursosDelProfesor = relacionProfesorCurso
     .filter((rel) => rel.profesor_id === profesorId)
     .map((rel) => cursosData.find((c) => c.course_id === rel.course_id))
     .filter(Boolean);
